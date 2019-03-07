@@ -1,0 +1,57 @@
+local backgroundImage = display.newImageRect("pete.jpg", 500, 800)
+backgroundImage.x = display.contentCenterX
+backgroundImage.y = display.contentCenterY
+backgroundImage.ID = ""
+---------------------------------------------------------------------------------------------------------------------
+local EnterTextField = display.newText( "Enter Diameter:", display.contentCenterX + 1 , display.contentCenterY - 200, native.systemFont, 32 )
+EnterTextField.id = "Enter textField"
+EnterTextField:setFillColor( 255, 255, 255 )
+----------------------------------------------------------------------------------------------------------------------
+local diameterTextField = native.newTextField( display.contentCenterX + 1, display.contentCenterY - 150, 300, 75 )
+diameterTextField.id = "Diameter textField"
+----------------------------------------------------------------------------------------------------------------------
+local calculateButton = display.newImageRect( "button.png", 200, 125 )
+calculateButton.x = display.contentCenterX
+calculateButton.y = display.contentCenterY 
+calculateButton.id = "calculate button"
+----------------------------------------------------------------------------------------------------------------------
+local howTextField = display.newText( "Circle Calculator", display.contentCenterX + 1 , display.contentCenterY - 250, native.systemFont, 32 )
+howTextField.id = "how textField"
+howTextField:setFillColor( 255, 255, 255 )
+----------------------------------------------------------------------------------------------------------------------
+local areaTextField = display.newText( "Area", display.contentCenterX + 1 , display.contentCenterY +200, native.systemFont, 25 )
+areaTextField.id = "area textField"
+areaTextField:setFillColor( 255, 255, 255 )
+-----------------------------------------------------------------------------------------------------------
+local circumferenceTextField = display.newText( "Circumference", display.contentCenterX + 1 , display.contentCenterY +230, native.systemFont, 20 )
+circumferenceTextField.id = "Circumference textField"
+circumferenceTextField:setFillColor( 255, 255, 255 )
+-----------------------------------------------------------------------------------------------------------
+local function calculateButtonTouch( event )
+
+
+    -- this function calculates the area of a square given the length of one of its sides
+ 
+    local diameter
+    local are
+    local pi
+    local radius 
+    local circumference
+ 
+    pi = math.pi
+    diameter = diameterTextField.text 
+    radius = diameter / 2
+    area = pi * radius ^ 2
+    circumference = 2 * pi * radius
+    -- print( area )
+    areaTextField.text = "Area = " .. area
+    circumferenceTextField.text = "Circumference = " ..  circumference
+    
+    return true
+end
+
+calculateButton:addEventListener( "touch", calculateButtonTouch )
+
+
+
+
